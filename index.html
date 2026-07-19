@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0b15" />
+  <meta name="description" content="Signal Squad is a cooperative TypeScript browser game about collecting signals, protecting your team, and keeping the party connected." />
+  <title>Signal Squad — Cooperative Browser Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#game" aria-label="Signal Squad home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Signal <strong>Squad</strong></span>
+      </a>
+      <div class="header-actions">
+        <span class="online-pill"><i></i> Squad online</span>
+        <button class="icon-button" id="soundButton" type="button" aria-label="Toggle sound" aria-pressed="true">Sound on</button>
+        <button class="icon-button" id="pauseButton" type="button" aria-label="Pause game">Pause</button>
+      </div>
+    </header>
+
+    <section class="intro" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">CO-OP ARCADE // BROWSER BUILD</p>
+        <h1 id="title">Stay close.<br /><span>Keep the signal alive.</span></h1>
+      </div>
+      <p class="intro-copy">Recover lost signals with your AI squadmate, return them to the shared beacon, and pulse away the glitches before your connection drops.</p>
+    </section>
+
+    <section class="game-layout" id="game">
+      <aside class="panel mission-panel" aria-label="Mission status">
+        <div class="panel-label">Run status</div>
+        <div class="time-card"><span>TIME LEFT</span><strong id="timeValue">01:15</strong></div>
+        <div class="metric-grid">
+          <div><span>TEAM SCORE</span><strong id="scoreValue">0000</strong></div>
+          <div><span>STREAK</span><strong id="streakValue">x1</strong></div>
+        </div>
+        <div class="shield-block">
+          <div class="metric-heading"><span>SQUAD LINK</span><b id="shieldValue">100%</b></div>
+          <div class="meter"><i id="shieldMeter"></i></div>
+        </div>
+        <div class="mission-copy">
+          <span class="mission-number">01</span>
+          <div><strong>RECONNECT</strong><p>Collect signal shards and carry them back to the center beacon.</p></div>
+        </div>
+        <div class="controls-list" aria-label="Game controls">
+          <div><span>Move</span><kbd>WASD</kbd></div>
+          <div><span>Pulse</span><kbd>SPACE</kbd></div>
+          <div><span>Pause</span><kbd>P</kbd></div>
+        </div>
+      </aside>
+
+      <div class="game-stage">
+        <canvas id="gameCanvas" width="1000" height="620" aria-label="Signal Squad game arena"></canvas>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="game-overlay" id="startOverlay">
+          <span class="overlay-kicker">READY CHECK</span>
+          <h2>Your squad is waiting.</h2>
+          <p>Link up with Nova, collect 3 shards at a time, and deliver them to the beacon before the timer expires.</p>
+          <button class="primary-button" id="startButton" type="button">Start mission <span>→</span></button>
+          <small>Best score on this device: <b id="bestScore">0</b></small>
+        </div>
+        <div class="game-overlay hidden" id="endOverlay">
+          <span class="overlay-kicker">RUN COMPLETE</span>
+          <h2 id="endTitle">Signal restored.</h2>
+          <p id="endCopy">Your squad kept the network alive.</p>
+          <button class="primary-button" id="restartButton" type="button">Run it back <span>↻</span></button>
+        </div>
+        <div class="touch-controls" aria-label="Touch controls">
+          <div class="touch-pad">
+            <button data-key="ArrowUp" aria-label="Move up">↑</button>
+            <button data-key="ArrowLeft" aria-label="Move left">←</button>
+            <button data-key="ArrowDown" aria-label="Move down">↓</button>
+            <button data-key="ArrowRight" aria-label="Move right">→</button>
+          </div>
+          <button class="pulse-button" data-key="Space" aria-label="Use pulse">PULSE</button>
+        </div>
+      </div>
+
+      <aside class="panel party-panel" aria-label="Squad activity">
+        <div class="panel-label">Party</div>
+        <div class="party-code">
+          <div><span>PARTY CODE</span><strong id="partyCode">----</strong></div>
+          <button id="copyButton" type="button" aria-label="Copy party code">Copy</button>
+        </div>
+        <div class="squad-list">
+          <article><span class="avatar player-avatar">G</span><div><strong>You</strong><small><i></i> Connected</small></div><b id="playerCargo">0/3</b></article>
+          <article><span class="avatar bot-avatar">N</span><div><strong>Nova</strong><small><i></i> AI squadmate</small></div><b id="botCargo">0/3</b></article>
+        </div>
+        <div class="activity-header"><span>LIVE COMMS</span><i></i></div>
+        <ol class="activity-feed" id="activityFeed" aria-live="polite">
+          <li><span>SYS</span><p>Beacon calibrated. Awaiting squad.</p></li>
+        </ol>
+        <div class="tip-card"><span>PRO TIP</span><p>Pulse near Nova to clear a path for both of you.</p></div>
+      </aside>
+    </section>
+
+    <footer>
+      <span>Built with TypeScript + Canvas API</span>
+      <span>Local-first • Keyboard + touch • No tracking</span>
+    </footer>
+  </main>
+  <script type="module" src="dist/game.js"></script>
+</body>
+</html>

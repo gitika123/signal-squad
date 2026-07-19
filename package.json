@@ -1,0 +1,19 @@
+﻿{
+  "name": "signal-squad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A cooperative browser arcade game built with TypeScript and the Canvas API.",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
