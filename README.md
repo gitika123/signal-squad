@@ -4,6 +4,9 @@ A polished cooperative browser game where the player and an autonomous squadmate
 
 Signal Squad is intentionally a small, finished game rather than a broad prototype. It demonstrates a complete game loop, responsive input, AI steering, collision systems, difficulty scaling, state management, generated audio, accessible UI, and production-minded tests in a dependency-light TypeScript codebase.
 
+<img width="1877" height="806" alt="image" src="https://github.com/user-attachments/assets/458d4e95-2697-40d9-925f-8a4eab4e6d5c" />
+
+
 ## Play
 
 - Move with **WASD** or **arrow keys**.
