@@ -52,7 +52,3 @@ scripts/serve.mjs  Dependency-free local static server
 ## Next platform milestone
 
 The next iteration would replace the local party adapter with authenticated lobby presence and invite flows, then synchronize player inputs through a server-authoritative session. The existing game loop, party code, feed, and player-state boundary are designed so that work can be added without rewriting rendering or scoring.
-
-## License
-
-MIT © 2026 Gitika Rath
